@@ -1,5 +1,5 @@
 # react-todo-list
 A simple react todo list demo using ant design.
 
-![](/home/don/Desktop/demo.gif)
+![demo](https://raw.githubusercontent.com/changday/react-todo-list/master/demo.gif)
 
