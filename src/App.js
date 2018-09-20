@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import {Input, Button, List} from 'antd';
+import { Input, Button, List } from 'antd';
 import 'antd/dist/antd.css'
 
 class App extends Component {
@@ -11,6 +11,7 @@ class App extends Component {
     }
     this.handleInputChange = this.handleInputChange.bind(this);
     this.handleAddItem = this.handleAddItem.bind(this);
+    this.handleDeleteItem = this.handleDeleteItem.bind(this);
   }
   render() {
     return (
@@ -27,7 +28,7 @@ class App extends Component {
         <List
           bordered
           dataSource={this.state.list}
-          renderItem={item => (<List.Item>{item}</List.Item>)}
+          renderItem={(item, index) => (<List.Item onClick={() => this.handleDeleteItem(index)}>{item}</List.Item>)}
           style={{width: "250px", marginTop: "10px"}}
         />
       </div>
@@ -42,7 +43,16 @@ class App extends Component {
 
   handleAddItem() {
     this.setState({
-      list: [...this.state.list, this.state.inputValue]
+      list: [...this.state.list, this.state.inputValue],
+      inputValue: ""
+    })
+  }
+
+  handleDeleteItem(index) {
+    const currentList = [...this.state.list];
+    currentList.splice(index, 1);
+    this.setState({
+      list: currentList
     })
   }
 }
