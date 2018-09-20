@@ -1,2 +1,5 @@
 # react-todo-list
-A react todo list for beginners
+A simple react todo list demo using ant design.
+
+![](/home/don/Desktop/demo.gif)
+
