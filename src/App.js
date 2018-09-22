@@ -36,23 +36,35 @@ class App extends Component {
   }
 
   handleInputChange(e) {
-    this.setState({
-      inputValue: e.target.value
-    })
+    const value = e.target.value;
+    this.setState(() => ({
+      inputValue: value
+    }))
   }
 
   handleAddItem() {
-    this.setState({
-      list: [...this.state.list, this.state.inputValue],
+    this.setState((prevstate) => ({
+      list: [...prevstate.list, prevstate.inputValue],
       inputValue: ""
-    })
+    }))
+    // this.setState({
+    //   list: [...this.state.list, this.state.inputValue],
+    //   inputValue: ""
+    // })
   }
 
   handleDeleteItem(index) {
-    const currentList = [...this.state.list];
-    currentList.splice(index, 1);
-    this.setState({
-      list: currentList
+    // const currentList = [...this.state.list];
+    // currentList.splice(index, 1);
+    // this.setState({
+    //   list: currentList
+    // })
+    this.setState((prevstate) => {
+      const currentList = [...prevstate.list];
+      currentList.splice(index,1);
+      return {
+        list: currentList
+      }
     })
   }
 }
