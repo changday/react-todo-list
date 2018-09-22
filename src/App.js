@@ -43,10 +43,14 @@ class App extends Component {
   }
 
   handleAddItem() {
-    this.setState((prevstate) => ({
-      list: [...prevstate.list, prevstate.inputValue],
-      inputValue: ""
-    }))
+    this.setState((prevstate) => {
+      if (!!prevstate.inputValue.trim()) {
+        return {
+          list: [...prevstate.list, prevstate.inputValue],
+          inputValue: ""
+        }
+      }
+    })
     // this.setState({
     //   list: [...this.state.list, this.state.inputValue],
     //   inputValue: ""
